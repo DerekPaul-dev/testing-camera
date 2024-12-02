@@ -54,12 +54,14 @@ function loadCameraDevicesToSelect(){
   console.log(cameraDevices, "camera devices")
   for (let i=0; i<cameraDevices.length; i++) {
     let device = cameraDevices[i];
-    $containerCamera.innerHTML = `
-      <li>DeviceId: ${device.deviceId}</li>
-      <li>GroupId: ${device.groupId}</li>
-      <li>Label: ${device.label}</li>
-      <li>Kind: ${device.kind}</li>
+    const $item = document.createElement('li');
+    $item.innerHTML = `
+      <p>DeviceId: ${device.deviceId}</p>
+      <p>GroupId: ${device.groupId}</p>
+      <p>Label: ${device.label}</p>
+      <p>Kind: ${device.kind}</p>
     `
+    $containerCamera.appendChild($item)
     cameraSelect.appendChild(new Option(device.label,device.deviceId))
   }
 }
