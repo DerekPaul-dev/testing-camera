@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing camera resolution</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h2 class="title">Take a photo</h2>
+    <header class="header">
+      <label>
+        Camera:
+        <button id="startCameraBtn">Start camera</button>
+        <select name="" id="cameraSelect"></select>
+      </label>
+      <label class="header__selector">
+        Desired Resolution:
+        <select id="resolutionSelect" class="header-selector__select">
+          <option value="640x480">640x480</option>
+          <option value="1280x720">1280x720</option>
+          <option value="1920x1080">1920x1080</option>
+          <option value="3840x2160">3840x2160</option>
+        </select>
+      </label>
+    </header>
+    <div class="body">
+      <button id="takePhotoBtn">Take Photo</button>
+      <video class="camera" muted autoplay="autoplay" playsinline="playsinline" webkit-playsinline id="video"></video>
+      <br/>
+      <canvas id="hiddenCanvas"></canvas>
+      <img id="photoTaken" />
+    </div>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
