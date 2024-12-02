@@ -19,6 +19,7 @@ async function requestCameraPermission() {
 
 // camera resolution higher
 const cameraSelect = document.getElementById("cameraSelect");
+const $containerCamera = document.getElementById("container-camera")
 
 window.onload = async function() {
   await loadCameraDevices();
@@ -26,9 +27,11 @@ window.onload = async function() {
 }
 
 async function loadCameraDevices(){
+  console.log(121212)
   const constraints = {video: true, audio: false};
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
   const devices = await navigator.mediaDevices.enumerateDevices();
+
 
   for (let i=0; i<devices. length;i++) {
     let device = devices[i];
@@ -36,6 +39,8 @@ async function loadCameraDevices(){
       cameraDevices.push(device);
     }
   }
+
+  console.log(cameraDevices, "cameraDevices");
 
   const tracks = stream.getTracks(); // stop the camera to avoid the NotReadableError
 
@@ -46,8 +51,15 @@ async function loadCameraDevices(){
 }
 
 function loadCameraDevicesToSelect(){
+  console.log(cameraDevices, "camera devices")
   for (let i=0; i<cameraDevices.length; i++) {
     let device = cameraDevices[i];
+    $containerCamera.innerHTML = `
+      <li>DeviceId: ${device.deviceId}</li>
+      <li>GroupId: ${device.groupId}</li>
+      <li>Label: ${device.label}</li>
+      <li>Kind: ${device.kind}</li>
+    `
     cameraSelect.appendChild(new Option(device.label,device.deviceId))
   }
 }
